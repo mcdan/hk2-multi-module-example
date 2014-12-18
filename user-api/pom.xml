@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>org.mcdan.hk2.samples.multimodule</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../parent</relativePath>
+    </parent>
+
+    <groupId>org.mcdan.hk2.samples.multimodule</groupId>
+    <artifactId>user-api</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>User API</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>osgiversion-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.glassfish.hk2</groupId>
+                <artifactId>hk2-inhabitant-generator</artifactId>                
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish.hk2</groupId>
+            <artifactId>hk2-api</artifactId>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.mcdan.hk2.samples.multimodule</groupId>
+	<artifactId>parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Parent Pom</name>
+
+	<properties>
+		<slf4j.version>1.7.7</slf4j.version>
+		<hk2.version>2.4.0-b07</hk2.version>
+	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.glassfish.hk2</groupId>
+					<artifactId>osgiversion-maven-plugin</artifactId>
+					<version>${hk2.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>bundle-manifest</id>
+							<phase>process-classes</phase>
+							<goals>
+								<goal>manifest</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.glassfish.hk2</groupId>
+					<artifactId>hk2-inhabitant-generator</artifactId>
+					<version>${hk2.version}</version>
+					<configuration>
+						<verbose>true</verbose>
+						<locator>${project.groupId}.${project.artifactId}</locator>
+					</configuration>
+					<executions>
+						<execution>
+							<id>generate-inhabitants</id>
+							<goals>
+								<goal>generate-inhabitants</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.hk2</groupId>
+				<artifactId>hk2-api</artifactId>
+				<version>${hk2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.hk2</groupId>
+				<artifactId>hk2-locator</artifactId>
+				<version>${hk2.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>
