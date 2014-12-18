@@ -43,7 +43,6 @@
 					<version>${hk2.version}</version>
 					<configuration>
 						<verbose>true</verbose>
-						<locator>${project.groupId}.${project.artifactId}</locator>
 					</configuration>
 					<executions>
 						<execution>
