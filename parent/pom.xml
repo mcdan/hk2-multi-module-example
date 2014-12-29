@@ -14,11 +14,22 @@
 	<properties>
 		<slf4j.version>1.7.7</slf4j.version>
 		<hk2.version>2.4.0-b07</hk2.version>
+        <jersey.version>2.13</jersey.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-compiler-plugin</artifactId>
+	                <inherited>true</inherited>
+	                <configuration>
+	                    <source>1.7</source>
+	                    <target>1.7</target>
+	                </configuration>
+				</plugin>
 				<plugin>
 					<groupId>org.glassfish.hk2</groupId>
 					<artifactId>osgiversion-maven-plugin</artifactId>

@@ -19,5 +19,6 @@
         <module>application</module>
         <module>message-api</module>
         <module>message-impl</module>
+        <module>jersey-application</module>
 	</modules>
 </project>
