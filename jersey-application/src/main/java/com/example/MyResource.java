@@ -1,15 +1,21 @@
 package com.example;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import org.mcdan.hk2.samples.multimodule.user.UserFactory;
 
 /**
  * Root resource (exposed at "myresource" path)
  */
 @Path("myresource")
 public class MyResource {
+
+	@Inject
+	private UserFactory userFactory;
 
     /**
      * Method handling HTTP GET requests. The returned object will be sent
@@ -20,6 +26,9 @@ public class MyResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
-        return "Got it!";
+    	if (userFactory != null) {
+            return "Hello: " + userFactory.getUser().getUserName();
+    	}
+        return "!!NO GOTS!!";
     }
 }
